@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import './App.css';
-import Panell from './components/panell/Panell';
+import Buttons from './components/buttons/Buttons';
+import { StylesPanell, StylesPages } from './styled'
 
-function App(props) {
+function App() {
 
   const [budget, setBudget] = useState({ web: 0, pages: 1, lang: 1, seo: 0, ads: 0 });
   const [total, setTotal] = useState(0);
@@ -11,9 +12,7 @@ function App(props) {
     let total = 0;
 
     if (budget.web) total += 500;
-    if (budget.pages > 1 || budget.lang > 1) {
-      total += budget.pages * budget.lang * 30;
-    }
+    if (budget.pages > 1 || budget.lang > 1) total += budget.pages * budget.lang * 30;
     if (budget.seo) total += 300;
     if (budget.ads) total += 200;
 
@@ -27,7 +26,18 @@ function App(props) {
       <div className="row question">¿Qué quieres hacer?</div>
       <div className="row web">
         <input name="web" type="checkbox" onChange={(event) => setBudget({ ...budget, web: event.target.checked })} /> Una página web (500€)
-        {budget.web ? <Panell onPagesChange={text => setBudget({ ...budget, pages: text })} onLangChange={text => setBudget({ ...budget, lang: text })} /> : null}
+        {budget.web ?
+          <StylesPanell>
+            <StylesPages>
+              <label>Número de pàgines </label>
+              <Buttons onValueChange={text => setBudget({ ...budget, pages: text })} />
+            </StylesPages>
+            <StylesPages>
+              <label>Número d' idiomes </label>
+              <Buttons onValueChange={text => setBudget({ ...budget, lang: text })} />
+            </StylesPages>
+          </StylesPanell>
+          : null}
       </div>
       <div className="row seo">
         <input name="seo" type="checkbox" onChange={(event) => setBudget({ ...budget, seo: event.target.checked })} /> Una consultoria SEO (300€)
