@@ -58,3 +58,18 @@ export const WelcomeButton = styled.button`
     }
 `;
 
+export const WelcomeTitle = styled.p`
+    font-size: 4rem;
+    margin: 40px;
+    @media (max-width: 600px) {
+        font-size: 3rem;
+    }
+`;
+
+export const Paragraph = styled.p`
+    font-size: 2rem;
+    margin: 40px;
+    @media (max-width: 600px) {
+        font-size: 1.5rem;
+    }    
+`;
