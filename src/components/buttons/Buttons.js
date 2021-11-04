@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { StylesButtons, StylesInput } from "../../styled";
 
-
+// Exercise 3: Create custom components with buttons to add pages and languages into the budget
 const Buttons = ({ onValueChange }) => {
     const [value, setValue] = useState(1);
 
