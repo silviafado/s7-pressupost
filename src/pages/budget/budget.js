@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import '../../App.css';
 import Buttons from '../../components/buttons/Buttons';
-import { StylesPanell, StylesPages } from '../../styled'
+import { StylesPanell, StylesPages, GlobalStyle } from '../../styled'
 
 // Declare KEY for exercise 4 to save in localStorage
 const KEY = 'budget';
@@ -41,6 +41,7 @@ const Budget = () => {
 
     return (
         <div>
+            <GlobalStyle />
             <div className="row question">¿Qué quieres hacer?</div>
             <div className="row web">
                 <input name="web" type="checkbox" onChange={(event) => setBudget({ ...budget, web: event.target.checked })} /> Una página web (500€)
