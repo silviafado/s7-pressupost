@@ -1,5 +1,11 @@
 import styled, { createGlobalStyle } from "styled-components";
 
+// General styling
+export const StylesRow = styled.div`
+    padding-top: 10px;
+    padding-bottom: 10px;
+`
+
 // Exercise 2 & 3: Styling Panell pages and languages
 export const StylesPanell = styled.div`
     padding: 20px 20px 10px 20px;
@@ -13,7 +19,7 @@ export const StylesPanell = styled.div`
 export const StylesPages = styled.div`
         padding-bottom: 10px;
         display: flex;
-        @media (max-width: 380px) {
+        @media (max-width: 420px) {
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -32,7 +38,7 @@ export const StylesButtons = styled.button`
 
 export const StylesInput = styled.div`
         margin-left: 20px;
-        @media (max-width: 380px) {
+        @media (max-width: 420px) {
             margin-left: 0px;
             margin-top: 10px;
         }
@@ -92,4 +98,19 @@ export const GlobalStyleWelcome = createGlobalStyle`
     body {
         background-color: #282c34;
     }
+`
+
+// Exercise 6: Styling InfoButton
+export const StyleInfoButton = styled.button`
+    border-radius: 10px;
+    width: 20px;
+    height: 20px;
+    background-color: #a8a7a7;
+    color: white;
+    margin-left: 10px; 
+`
+
+export const DivInfoButton = styled.div`
+    display: flex;
+    align-items: center;
 `

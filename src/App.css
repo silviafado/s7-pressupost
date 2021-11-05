@@ -1,5 +1,5 @@
-.row {
-  padding-top: 10px;
-  padding-bottom: 10px;
+/* Styling info popup background */
+.popup-overlay {
+  background-color: grey !important;
+  opacity: 0.5;
 }
-

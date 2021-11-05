@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import '../../App.css';
 import Buttons from '../../components/buttons/Buttons';
-import { StylesPanell, StylesPages, GlobalStyle } from '../../styled'
+import { StylesRow, StylesPanell, StylesPages, GlobalStyle, DivInfoButton } from '../../styled'
+import { InfoPages, InfoLang } from '../../components/infoButton/InfoButton';
 
 // Declare KEY for exercise 4 to save in localStorage
 const KEY = 'budget';
@@ -42,29 +42,35 @@ const Budget = () => {
     return (
         <div>
             <GlobalStyle />
-            <div className="row question">¿Qué quieres hacer?</div>
-            <div className="row web">
+            <StylesRow>¿Qué quieres hacer?</StylesRow>
+            <StylesRow>
                 <input name="web" type="checkbox" onChange={(event) => setBudget({ ...budget, web: event.target.checked })} /> Una página web (500€)
                 {budget.web ?
                     <StylesPanell>
                         <StylesPages>
                             <label>Número de pàgines </label>
-                            <Buttons onValueChange={text => setBudget({ ...budget, pages: text })} />
+                            <DivInfoButton>
+                                <Buttons onValueChange={text => setBudget({ ...budget, pages: text })} />
+                                <InfoPages />
+                            </DivInfoButton>
                         </StylesPages>
                         <StylesPages>
                             <label>Número d' idiomes </label>
-                            <Buttons onValueChange={text => setBudget({ ...budget, lang: text })} />
+                            <DivInfoButton>
+                                <Buttons onValueChange={text => setBudget({ ...budget, lang: text })} />
+                                <InfoLang />
+                            </DivInfoButton>
                         </StylesPages>
                     </StylesPanell>
                     : null}
-            </div>
-            <div className="row seo">
+            </StylesRow>
+            <StylesRow>
                 <input name="seo" type="checkbox" onChange={(event) => setBudget({ ...budget, seo: event.target.checked })} /> Una consultoria SEO (300€)
-            </div>
-            <div className="row ads">
+            </StylesRow>
+            <StylesRow>
                 <input name="ads" type="checkbox" onChange={(event) => setBudget({ ...budget, ads: event.target.checked })} /> Una campaña de Google Ads (200€)
-            </div>
-            <div className="total">Preu: {total}€</div>
+            </StylesRow>
+            <StylesRow>Preu: {total}€</StylesRow>
         </div>
     );
 }
