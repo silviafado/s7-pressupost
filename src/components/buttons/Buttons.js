@@ -6,7 +6,8 @@ const Buttons = ({ onValueChange }) => {
     const [value, setValue] = useState(1);
 
     useEffect(() => {
-        onValueChange(value)
+        onValueChange(value);
+        // eslint-disable-next-line
     }, [value])
 
     const minusValue = (event) => {

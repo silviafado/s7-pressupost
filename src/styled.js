@@ -16,7 +16,7 @@ export const StylesPanell = styled.div`
     display: '';
 `
 
-export const StylesPages = styled.div`
+export const StylesValues = styled.div`
         padding-bottom: 10px;
         display: flex;
         @media (max-width: 420px) {
@@ -113,4 +113,44 @@ export const StyleInfoButton = styled.button`
 export const DivInfoButton = styled.div`
     display: flex;
     align-items: center;
+`
+
+// Exercise 7: Styling name and client inputs
+export const StylesNameDivInput = styled.div`
+    display: flex;
+    flex-direction: column;
+    max-width: 340px;
+    line-height: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    @media (max-width: 420px){
+        justify-content: space-between;
+    }
+`
+
+export const StylesNameInput = styled.input` 
+    line-height: 25px;
+    font-size: 14px;
+`
+
+// Styling saved budgets table
+export const StylesSideTable = styled.div`
+    display:flex;
+    justify-content: space-between;
+    @media( max-width: 800px) {
+        flex-direction: column;
+    }
+`
+
+export const SavedBudgetsUl = styled.ul`
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+`
+
+export const SavedBudgetsLi = styled.li`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-right: 20px;
 `
