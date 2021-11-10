@@ -114,7 +114,7 @@ const Budget = () => {
                 </div>
                 <div>
                     {budgetsArray ?
-                        <List budgets={budgetsArray} />
+                        <List budgets={budgetsArray} key={KEY} />
                         : null}
                 </div>
             </StylesSideTable>

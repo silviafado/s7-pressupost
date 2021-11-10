@@ -154,3 +154,13 @@ export const SavedBudgetsLi = styled.li`
     justify-content: space-between;
     margin-right: 20px;
 `
+
+// Exercise 8: Styling sorting buttons div
+export const StylesSortDiv = styled.div`
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    @media (max-width: 800px) {
+        padding-top: 30px;
+    }
+`

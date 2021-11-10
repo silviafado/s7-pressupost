@@ -1,47 +1,11 @@
 import { StylesRow, SavedBudgetsUl, SavedBudgetsLi, StylesSortDiv } from "../../styled";
-import { useState, useEffect } from 'react';
+import { useState } from "react";
 
 const List = ({ budgets }) => {
 
-    // Exercise 7: Create a list of saved budgets
-    const [list, setList] = useState(budgets);
-
-    // Exercise 8: Sort alphabetically
-    const sortAlphabet = () => {
-        budgets.sort((a, b) => a.Name > b.Name ? 1 : -1);
-        setList(() => {
-            return [...budgets];
-        })
-    }
-
-    // Exercise 8: Sort by date
-    const sortDate = () => {
-        budgets.sort((a, b) => a.pages > b.pages ? 1 : -1);
-        setList(() => {
-            return [...budgets];
-        })
-    }
-
-    // Exercise 8: Reset order
-    const sortReset = () => {
-        const storedBudgets = JSON.parse(localStorage.getItem('budget'));
-        setList(() => {
-            return storedBudgets;
-        })
-    }
-
-    // Exercise 9: Search by input
-    const searchBudget = (event) => {
-        const search = budgets.filter(el => el.Name.includes(event.target.value));
-        setList(() => {
-            return search;
-        })
-    }
-
-    // Declare list div to fill in with saved budgets
-    const listToRender = budgets.map((budgets) => {
+    const budgetsRender = budgets.map((budgets) => {
         return (
-            <SavedBudgetsLi key={budgets.id} list={list}>
+            <SavedBudgetsLi key={budgets.id} >
                 <StylesRow>{budgets.Name}</StylesRow>
                 <StylesRow>{budgets.client}</StylesRow>
                 <StylesRow>{budgets.date}</StylesRow>
@@ -55,9 +19,33 @@ const List = ({ budgets }) => {
         )
     })
 
-    // eslint-disable-next-line
-    useEffect(setList, [budgets])
-    //useEffect(searchBudget, [budgets])
+    const [list, setList] = useState(budgetsRender);
+
+    const sortAlphabet = () => {
+        let sortedName = budgets.sort((a, b) => a.Name > b.Name ? 1 : -1);
+        console.log(sortedName);
+        return sortedName;
+
+    }
+
+    const sortDate = () => {
+        let sortedDate = budgets.sort((a, b) => a.date > b.date ? 1 : -1);
+        console.log(sortedDate);
+        return sortedDate;
+    }
+
+    const sortReset = () => {
+        //let orderCreation = new Date();
+        let sortedReset = budgets;
+        console.log(sortedReset);
+    }
+
+    /*const searchBudget = (event) => {
+        const search = budgets.filter(el => el.Name === event.target.value)
+
+    }*/
+
+
 
     return (
         <div>
@@ -67,7 +55,7 @@ const List = ({ budgets }) => {
                 <button onClick={sortReset}>Reiniciar ordre</button>
             </StylesSortDiv>
             <StylesRow>
-                <input type="text" placeholder="Search..." size="25" onChange={searchBudget} />
+                <input placeholder="Search..." size="25" />
             </StylesRow>
             <StylesRow><b>PRESSUPOSTS GUARDATS</b></StylesRow>
             <SavedBudgetsUl>
@@ -82,7 +70,7 @@ const List = ({ budgets }) => {
                     <StylesRow>GOOGLE ADS</StylesRow>
                     <StylesRow>TOTAL</StylesRow>
                 </SavedBudgetsLi>
-                {listToRender}
+                {budgetsRender}
             </SavedBudgetsUl>
         </div>
     )
