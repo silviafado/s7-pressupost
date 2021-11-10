@@ -23,11 +23,11 @@ const List = ({ budgets, handleClick }) => {
                             <StylesRow>{budgets.Name}</StylesRow>
                             <StylesRow>{budgets.client}</StylesRow>
                             <StylesRow>{budgets.date}</StylesRow>
-                            <StylesRow>{budgets.web}</StylesRow>
+                            <StylesRow>{budgets.web.toString()}</StylesRow>
                             <StylesRow>{budgets.pages}</StylesRow>
                             <StylesRow>{budgets.lang}</StylesRow>
-                            <StylesRow>{budgets.seo}</StylesRow>
-                            <StylesRow>{budgets.ads}</StylesRow>
+                            <StylesRow>{budgets.seo.toString()}</StylesRow>
+                            <StylesRow>{budgets.ads.toString()}</StylesRow>
                             <StylesRow>{budgets.total}</StylesRow>
                         </SavedBudgetsLi>
                     )
