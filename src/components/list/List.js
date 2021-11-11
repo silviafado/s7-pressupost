@@ -1,5 +1,5 @@
 import { StylesRow, SavedBudgetsUl, SavedBudgetsLi, StylesSortDiv } from "../../styled";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const List = ({ budgets }) => {
 
@@ -16,7 +16,7 @@ const List = ({ budgets }) => {
 
     // Exercise 8: Sort by date
     const sortDate = () => {
-        budgets.sort((a, b) => a.pages > b.pages ? 1 : -1);
+        budgets.sort((a, b) => a.date > b.date ? 1 : -1);
         setList(() => {
             return [...budgets];
         })
@@ -32,32 +32,12 @@ const List = ({ budgets }) => {
 
     // Exercise 9: Search by input
     const searchBudget = (event) => {
-        const search = budgets.filter(el => el.Name.includes(event.target.value));
+        const searchBudgets = [...budgets];
+        const search = searchBudgets.filter(el => el.Name.includes(event.target.value));
         setList(() => {
             return search;
         })
     }
-
-    // Declare list div to fill in with saved budgets
-    const listToRender = budgets.map((budgets) => {
-        return (
-            <SavedBudgetsLi key={budgets.id} list={list}>
-                <StylesRow>{budgets.Name}</StylesRow>
-                <StylesRow>{budgets.client}</StylesRow>
-                <StylesRow>{budgets.date}</StylesRow>
-                <StylesRow>{budgets.web.toString()}</StylesRow>
-                <StylesRow>{budgets.pages}</StylesRow>
-                <StylesRow>{budgets.lang}</StylesRow>
-                <StylesRow>{budgets.seo.toString()}</StylesRow>
-                <StylesRow>{budgets.ads.toString()}</StylesRow>
-                <StylesRow>{budgets.total}</StylesRow>
-            </SavedBudgetsLi>
-        )
-    })
-
-    // eslint-disable-next-line
-    useEffect(setList, [budgets])
-    //useEffect(searchBudget, [budgets])
 
     return (
         <div>
@@ -82,7 +62,22 @@ const List = ({ budgets }) => {
                     <StylesRow>GOOGLE ADS</StylesRow>
                     <StylesRow>TOTAL</StylesRow>
                 </SavedBudgetsLi>
-                {listToRender}
+                {list.map((budgets) => {
+                    return (
+                        <SavedBudgetsLi key={budgets.id} list={list}>
+                            <StylesRow>{budgets.Name}</StylesRow>
+                            <StylesRow>{budgets.client}</StylesRow>
+                            <StylesRow>{budgets.date}</StylesRow>
+                            <StylesRow>{budgets.web.toString()}</StylesRow>
+                            <StylesRow>{budgets.pages}</StylesRow>
+                            <StylesRow>{budgets.lang}</StylesRow>
+                            <StylesRow>{budgets.seo.toString()}</StylesRow>
+                            <StylesRow>{budgets.ads.toString()}</StylesRow>
+                            <StylesRow>{budgets.total}</StylesRow>
+                        </SavedBudgetsLi>
+                    )
+                })
+                }
             </SavedBudgetsUl>
         </div>
     )
