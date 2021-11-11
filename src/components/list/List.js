@@ -13,7 +13,6 @@ const List = ({ budgets }) => {
             return [...budgets];
         })
     }
-
     // Exercise 8: Sort by date
     const sortDate = () => {
         budgets.sort((a, b) => a.date > b.date ? 1 : -1);
@@ -21,7 +20,6 @@ const List = ({ budgets }) => {
             return [...budgets];
         })
     }
-
     // Exercise 8: Reset order
     const sortReset = () => {
         const storedBudgets = JSON.parse(localStorage.getItem('budget'));

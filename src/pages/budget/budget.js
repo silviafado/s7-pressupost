@@ -5,7 +5,7 @@ import Buttons from '../../components/buttons/Buttons';
 import List from '../../components/list/List';
 import { InfoPages, InfoLang } from '../../components/infoButton/InfoButton';
 import '../../App.css';
-import { StylesRow, StylesPanell, StylesValues, GlobalStyle, DivInfoButton, StylesNameDivInput, StylesNameInput, StylesSideTable } from '../../styled'
+import { StylesRow, StylesPanell, StylesValues, GlobalStyle, DivInfoButton, StylesNameDivInput, StylesNameInput, StylesSideTable } from '../../styled';
 
 // Declare KEY for exercise 4 to save in localStorage
 const KEY = 'budget';
@@ -27,9 +27,11 @@ const Budget = () => {
     // ----- Functions -----
     const calcBudget = () => {
         let total = 0;
-        if (budget.web) total += 500;
-        // Exercise 2: Adding pages and languages properties into budget
-        if (budget.pages > 1 || budget.lang > 1) total += budget.pages * budget.lang * 30;
+        if (budget.web) {
+            total += 500;
+            // Exercise 2: Adding pages and languages properties into budget
+            if (budget.pages > 1 || budget.lang > 1) total += budget.pages * budget.lang * 30;
+        }
         if (budget.seo) total += 300;
         if (budget.ads) total += 200;
         setTotal(total);
@@ -51,7 +53,7 @@ const Budget = () => {
         setBudget(newBudget);
     }
 
-    // Exercise 11: Update url with budget properties
+    // Exercise 11: useHistory constant for later use
     const history = useHistory();
 
     // ----- useEffect -----
@@ -74,6 +76,7 @@ const Budget = () => {
     useEffect(() => {
         const query = `${window.location.pathname}?&web=${budget.web}&seo=${budget.seo}&ads=${budget.ads}&pages${budget.pages}&languages=${budget.lang}`;
         history.push(query);
+        // eslint-disable-next-line 
     }, [budget.web, budget.seo, budget.ads, budget.pages, budget.lang]);
 
     return (
