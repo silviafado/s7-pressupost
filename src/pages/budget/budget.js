@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
-import Buttons from '../../components/buttons/Buttons';
-import { StylesRow, StylesPanell, StylesValues, GlobalStyle, DivInfoButton, StylesNameDivInput, StylesNameInput, StylesSideTable } from '../../styled'
-import { InfoPages, InfoLang } from '../../components/infoButton/InfoButton';
+import { useHistory } from 'react-router';
 import { v4 as uuidv4 } from 'uuid';
+import Buttons from '../../components/buttons/Buttons';
 import List from '../../components/list/List';
+import { InfoPages, InfoLang } from '../../components/infoButton/InfoButton';
+import '../../App.css';
+import { StylesRow, StylesPanell, StylesValues, GlobalStyle, DivInfoButton, StylesNameDivInput, StylesNameInput, StylesSideTable } from '../../styled'
 
 // Declare KEY for exercise 4 to save in localStorage
 const KEY = 'budget';
@@ -16,12 +18,13 @@ const Budget = () => {
     // Declare initial empty budget to reset for new entries
     const newBudget = { id: uuidv4(), web: false, pages: 1, lang: 1, seo: false, ads: false, date: date, Name: '', client: '' };
 
+    // ----- useState -----
     // Exercise 1: Calculate budget total according object properties
     const [budget, setBudget] = useState(newBudget);
     const [total, setTotal] = useState(0);
     const [budgetsArray, setBudgetsArray] = useState([]);
 
-
+    // ----- Functions -----
     const calcBudget = () => {
         let total = 0;
         if (budget.web) total += 500;
@@ -48,6 +51,10 @@ const Budget = () => {
         setBudget(newBudget);
     }
 
+    // Exercise 11: Update url with budget properties
+    const history = useHistory();
+
+    // ----- useEffect -----
     // Exercise 1 & 2: useEffect to update budget total on object's change
     useEffect(calcBudget, [budget]);
 
@@ -63,6 +70,11 @@ const Budget = () => {
         localStorage.setItem(KEY, JSON.stringify(budgetsArray))
     }, [budgetsArray])
 
+    // Exercise 11: Update url with budget properties
+    useEffect(() => {
+        const query = `${window.location.pathname}?&web=${budget.web}&seo=${budget.seo}&ads=${budget.ads}&pages${budget.pages}&languages=${budget.lang}`;
+        history.push(query);
+    }, [budget.web, budget.seo, budget.ads, budget.pages, budget.lang]);
 
     return (
         <div>
@@ -113,9 +125,7 @@ const Budget = () => {
                     <StylesRow><button onClick={newEntry}>Nou pressupost</button></StylesRow>
                 </div>
                 <div>
-                    {budgetsArray ?
-                        <List budgets={budgetsArray} key={KEY} />
-                        : null}
+                    <List budgets={budgetsArray} />
                 </div>
             </StylesSideTable>
         </div>
