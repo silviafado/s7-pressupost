@@ -39,11 +39,6 @@ const List = ({ budgets }) => {
         })
     }
 
-    // Exercise 11: Update url with budget properties
-    /*useEffect(() => {
-        const url = 'http://localhost:3000/budget/';
-    }, [])*/
-
     return (
         <div>
             <StylesSortDiv>

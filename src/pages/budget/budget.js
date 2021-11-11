@@ -58,7 +58,7 @@ const Budget = () => {
             setBudgetsArray(storedBudgets);
         }
     }, [])
-    // Exercise 4: Save budget in localStorage
+    // Exercise 4 & 10: Save budgets array in localStorage
     useEffect(() => {
         localStorage.setItem(KEY, JSON.stringify(budgetsArray))
     }, [budgetsArray])
