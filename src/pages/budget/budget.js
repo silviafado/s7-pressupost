@@ -69,13 +69,15 @@ const Budget = () => {
     }, [])
     // Exercise 4 & 10: Save budgets array in localStorage
     useEffect(() => {
-        localStorage.setItem(KEY, JSON.stringify(budgetsArray))
+        localStorage.setItem(KEY, JSON.stringify(budgetsArray));
     }, [budgetsArray])
 
     // Exercise 11: Update url with budget properties
     useEffect(() => {
-        const query = `${window.location.pathname}?&web=${budget.web}&seo=${budget.seo}&ads=${budget.ads}&pages${budget.pages}&languages=${budget.lang}`;
-        history.push(query);
+        if (budget !== newBudget) {
+            const query = `${window.location.pathname}?&web=${budget.web}&seo=${budget.seo}&ads=${budget.ads}&pages${budget.pages}&languages=${budget.lang}`;
+            history.push(query);
+        }
         // eslint-disable-next-line 
     }, [budget.web, budget.seo, budget.ads, budget.pages, budget.lang]);
 
