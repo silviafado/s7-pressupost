@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Welcome from '../pages/welcome/Welcome';
-import Budget from '../pages/budget/Budget';
+import Budget from '../pages/budget/budget';
 
 // Exercise 5: Routes
 const Routes = () => (
